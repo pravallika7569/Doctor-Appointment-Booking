@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/modern.css">
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen py-10">
+
+  <div class="max-w-5xl mx-auto px-4">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-3xl font-semibold text-gray-800">Welcome, {{ current_user.get('name') }}</h2>
+      <a href="/logout" class="text-red-600 font-medium hover:underline">Logout</a>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="flex flex-wrap gap-3 mb-8">
+      <a href="/chat" class="px-6 py-3 bg-blue-600 text-white rounded-xl font-medium shadow hover:bg-blue-700 transition duration-200">
+        Chat with QuickCare
+      </a>
+      <a href="/doctors" class="px-6 py-3 bg-gray-200 text-gray-800 rounded-xl font-medium shadow hover:bg-gray-300 transition duration-200">
+        Find Doctors
+      </a>
+    </div>
+
+    <!-- Appointments -->
+    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Your Appointments</h3>
+    {% if appointments %}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {% for a in appointments %}
+      <div class="p-4 bg-white rounded-2xl shadow hover:shadow-lg transition duration-200">
+        <p class="text-gray-800 font-medium">Appointment #{{ a._id }}</p>
+        <p class="text-gray-500 text-sm mt-1">Doctor ID: {{ a.doctor_id }}</p>
+        <p class="text-gray-600 mt-2"><span class="font-semibold">Symptoms:</span> {{ a.symptoms }}</p>
+        <p class="text-gray-400 text-sm mt-1">Status: <span class="font-medium">{{ a.status }}</span></p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="text-gray-500 mt-2">You have no appointments yet.</p>
+    {% endif %}
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/modern.css">
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen flex items-center justify-center">
+
+  <div class="max-w-lg w-full bg-white rounded-2xl shadow-lg p-8">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Register</h2>
+
+    <form method="post" novalidate class="space-y-4">
+      {{ form.csrf_token }}
+      
+      <!-- Name -->
+      <div class="flex flex-col">
+        <label class="mb-1 text-gray-700">{{ form.name.label }}</label>
+        {{ form.name(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <!-- Email -->
+      <div class="flex flex-col">
+        <label class="mb-1 text-gray-700">{{ form.email.label }}</label>
+        {{ form.email(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <!-- Password -->
+      <div class="flex flex-col">
+        <label class="mb-1 text-gray-700">{{ form.password.label }}</label>
+        {{ form.password(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <!-- Role -->
+      <div class="flex flex-col">
+        <label class="mb-1 text-gray-700">{{ form.role.label }}</label>
+        {{ form.role(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <!-- Specialization (for doctors) -->
+      <div class="flex flex-col">
+        <label class="mb-1 text-gray-700">{{ form.specialization.label }}</label>
+        {{ form.specialization(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        {{ form.submit(class_='w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-200') }}
+      </div>
+    </form>
+
+    <p class="mt-6 text-center text-gray-600">
+      Already have an account? <a href="/login" class="text-blue-600 font-medium hover:underline">Login</a>
+    </p>
+  </div>
+
+</body>
+</html>

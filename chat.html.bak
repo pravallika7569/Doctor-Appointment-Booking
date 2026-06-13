@@ -1,0 +1,36 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Chat</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50 min-h-screen"><div class="max-w-3xl mx-auto p-6">
+  <h2 class="text-2xl">QuickCare Chat</h2>
+  <div id="chatWindow" class="bg-white p-4 rounded h-96 overflow-auto"></div>
+  <form id="chatForm" class="mt-4">
+    <input id="msg" class="w-full p-2 border rounded" placeholder="Describe symptoms..."/>
+    <div class="mt-2 flex gap-2">
+      <select id="age" class="p-2 border rounded"><option value=''>Age</option><option>20-35</option></select>
+      <select id="gender" class="p-2 border rounded"><option value=''>Gender</option><option>Male</option><option>Female</option></select>
+      <button class="px-3 py-2 bg-blue-600 text-white rounded">Send</button>
+    </div>
+  </form>
+</div>
+<script>
+const chatWindow = document.getElementById('chatWindow');
+const form = document.getElementById('chatForm');
+form.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const msg = document.getElementById('msg').value.trim();
+  if(!msg) return;
+  const el = document.createElement('div'); el.className='mb-2 text-right'; el.innerHTML='<div class="inline-block bg-blue-100 p-2 rounded">'+msg+'</div>'; chatWindow.appendChild(el);
+  document.getElementById('msg').value='';
+  const payload = {symptoms: msg, age: document.getElementById('age').value, gender: document.getElementById('gender').value};
+  const r = await fetch('/chat_api',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+  const j = await r.json();
+  const bot = document.createElement('div'); bot.className='mb-2'; bot.innerHTML='<div class="inline-block bg-gray-100 p-2 rounded"><strong>Bot:</strong><br/>'+j.reply+'</div>'; chatWindow.appendChild(bot);
+  if(j.suggested_doctors && j.suggested_doctors.length){
+    j.suggested_doctors.forEach(d=>{
+      const dEl = document.createElement('div'); dEl.className='mt-2'; dEl.innerHTML=`<div class="p-2 bg-white rounded shadow"><strong>${d.name}</strong> — ${d.specialization} — Rating: ${d.rating} <a class="text-blue-600" href="/doctor/${d.id}">View</a></div>`; chatWindow.appendChild(dEl);
+    });
+  }
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+});
+</script>
+</body></html>

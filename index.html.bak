@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QuickCare v3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 min-h-screen">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-3xl font-semibold mb-4">Doctor Appointment System — v3</h1>
+    <div class="space-x-4 mb-6">
+      <a class="px-4 py-2 bg-blue-600 text-white rounded" href="/register">Register</a>
+      <a class="px-4 py-2 bg-gray-200 rounded" href="/login">Login</a>
+      <a class="px-4 py-2 bg-gray-200 rounded" href="/doctors">Find Doctors</a>
+      <a class="px-4 py-2 bg-gray-200 rounded" href="/chat">Chat</a>
+      <a class="px-4 py-2 bg-gray-200 rounded" href="/analytics">Analytics</a>
+    </div>
+    <p>Demo accounts: <strong>patient@example.com / pass</strong>, <strong>doctor@example.com / pass</strong></p>
+  </div>
+</body>
+</html>

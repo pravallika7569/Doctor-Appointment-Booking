@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Register</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50 min-h-screen">
+  <div class="max-w-lg mx-auto p-6 bg-white rounded shadow mt-10">
+    <h2 class="text-xl mb-4">Register</h2>
+    <form method="post" novalidate>
+      {{ form.csrf_token }}
+      <div class="mb-2">{{ form.name.label }}{{ form.name(class_='w-full p-2 border rounded') }}</div>
+      <div class="mb-2">{{ form.email.label }}{{ form.email(class_='w-full p-2 border rounded') }}</div>
+      <div class="mb-2">{{ form.password.label }}{{ form.password(class_='w-full p-2 border rounded') }}</div>
+      <div class="mb-2">{{ form.role.label }}{{ form.role(class_='w-full p-2 border rounded') }}</div>
+      <div class="mb-2">{{ form.specialization.label }}{{ form.specialization(class_='w-full p-2 border rounded') }}</div>
+      <div>{{ form.submit(class_='px-4 py-2 bg-blue-600 text-white rounded') }}</div>
+    </form>
+    <p class="mt-4">Already have account? <a href="/login" class="text-blue-600">Login</a></p>
+  </div>
+</body>
+</html>

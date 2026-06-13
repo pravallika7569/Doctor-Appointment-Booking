@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/modern.css">
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen flex items-center justify-center">
+
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Welcome Back</h2>
+    
+    <form method="post" class="space-y-4">
+      {{ form.csrf_token }}
+
+      <div>
+        {{ form.email(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <div>
+        {{ form.password(class_='w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400') }}
+      </div>
+
+      <div>
+        {{ form.submit(class_='w-full py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-200') }}
+      </div>
+    </form>
+
+    <p class="mt-4 text-center text-gray-600 text-sm">
+      <a href="/reset_request" class="text-blue-600 hover:underline">Forgot password?</a>
+    </p>
+
+    <p class="mt-2 text-center text-gray-500 text-sm">
+      Don't have an account? <a href="/register" class="text-blue-600 hover:underline">Register</a>
+    </p>
+  </div>
+
+</body>
+</html>

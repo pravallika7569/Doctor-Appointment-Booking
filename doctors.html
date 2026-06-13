@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Find Doctors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/modern.css">
+</head>
+<body class="bg-gradient-to-br from-slate-100 to-slate-200 min-h-screen py-10">
+
+  <div class="max-w-5xl mx-auto px-4">
+    <h2 class="text-3xl font-semibold text-gray-800 mb-6 text-center">Find Doctors</h2>
+
+    {% if doctors %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {% for d in doctors %}
+      <div class="p-6 bg-white rounded-2xl shadow hover:shadow-lg transition duration-200">
+        <a href="/doctor/{{ d._id }}" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition duration-200">
+          {{ d.name }}
+        </a>
+        <p class="text-gray-500 mt-1 text-sm">{{ d.specialization }} — Rating: <span class="font-medium">{{ d.rating }}</span> ({{ d.reviews }} reviews)</p>
+        <p class="text-gray-600 mt-2">{{ d.bio }}</p>
+        <a href="/book/{{ d._id }}" class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded-xl font-medium shadow hover:bg-blue-700 transition duration-200">
+          Book Appointment
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <p class="text-gray-500 text-center mt-6">No doctors found.</p>
+    {% endif %}
+  </div>
+
+</body>
+</html>

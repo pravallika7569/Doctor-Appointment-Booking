@@ -1,0 +1,19 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Profile</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50 min-h-screen"><div class="max-w-2xl mx-auto p-6">
+  <h2>Profile</h2>
+  <form method="post">
+    {{ form.csrf_token }}
+    {{ form.name(class_='w-full p-2 border rounded') }}
+    {{ form.submit(class_='px-3 py-2 bg-blue-600 text-white rounded mt-2') }}
+  </form>
+  {% if doctor %}
+    <h3 class="mt-4">Doctor Profile</h3>
+    <form method="post" action="/profile_doctor">
+      {{ dform.csrf_token }}
+      {{ dform.specialization(class_='w-full p-2 border rounded') }}
+      {{ dform.bio(class_='w-full p-2 border rounded') }}
+      {{ dform.submit(class_='px-3 py-2 bg-blue-600 text-white rounded mt-2') }}
+    </form>
+  {% endif %}
+</div></body></html>

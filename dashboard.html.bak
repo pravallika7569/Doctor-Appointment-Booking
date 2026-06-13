@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Dashboard</title><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-50 min-h-screen"><div class="max-w-4xl mx-auto p-6">
+  <div class="flex justify-between items-center"><h2 class="text-2xl">Welcome</h2><a href="/logout" class="text-sm text-red-500">Logout</a></div>
+  <div class="mt-4">
+    <a href="/chat" class="px-3 py-2 bg-blue-600 text-white rounded">Chat with QuickCare</a>
+    <a href="/doctors" class="px-3 py-2 bg-gray-200 rounded ml-2">Find Doctors</a>
+  </div>
+  <h3 class="mt-6 text-lg">Your Appointments</h3>
+  <ul class="mt-2">
+    {% for a in appointments %}
+      <li class="p-2 bg-white rounded shadow mb-2">#{{ a._id }} — Doctor: {{ a.doctor_id }} — {{ a.symptoms }}</li>
+    {% else %}
+      <li>No appointments.</li>
+    {% endfor %}
+  </ul>
+</div></body></html>

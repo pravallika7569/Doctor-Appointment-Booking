@@ -1,0 +1,4 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Reset</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-slate-50 min-h-screen"><div class="max-w-md mx-auto p-6 bg-white rounded mt-10">
+  <h2>Reset Password</h2>
+  <form method="post">{{ form.csrf_token }}{{ form.password(class_='w-full p-2 border rounded')}}{{ form.confirm(class_='w-full p-2 border rounded mt-2')}}{{ form.submit(class_='px-3 py-2 bg-blue-600 text-white rounded mt-2') }}</form>
+</div></body></html>
